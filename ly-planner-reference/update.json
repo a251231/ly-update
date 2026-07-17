@@ -1,11 +1,11 @@
 {
-  "latest_version": "3.1.52",
-  "tag": "v3.1.52",
+  "latest_version": "3.1.53",
+  "tag": "v3.1.53",
   "release_date": "2026-07-17",
-  "summary": "Smart Material Planner Reference v3.1.52 已发布。",
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.52.html",
-  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.52/SmartMaterialPlannerReference_3.1.52_win_x64_onedir.zip",
+  "summary": "Smart Material Planner Reference v3.1.53 已发布。",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.53.html",
+  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.53/SmartMaterialPlannerReference_3.1.53_win_x64_onedir.zip",
   "download_password": "",
-  "sha256": "1effb474347998e152d61276889ad273f7ac19af4b54ad7857897fdc08c3d7b2",
+  "sha256": "687d8bbefb2be0a4a65694003b92a3292218119651f4339d6c8d80fc1da9dd1f",
   "mandatory": false
 }
