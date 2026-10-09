@@ -1,11 +1,39 @@
 {
-  "latest_version": "3.1.76",
-  "tag": "v3.1.76",
-  "release_date": "2026-10-05",
-  "summary": "智能配料排产软件 v3.1.76 已发布。下载密码：bjcr",
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.76.html",
+  "schema_version": 2,
+  "latest_version": "3.1.80",
+  "tag": "v3.1.80",
+  "release_date": "2026-10-09",
+  "summary": "本版本优化更新内容展示和版本发布同步流程。",
+  "changes": [
+    {
+      "category": "新增",
+      "title": "更新弹窗显示结构化内容",
+      "details": "客户端按新增、优化、修复和兼容性分类展示本次版本变化，并支持滚动查看。"
+    },
+    {
+      "category": "新增",
+      "title": "支持查看完整版本说明",
+      "details": "用户可以从更新弹窗打开当前版本的 GitHub Pages 说明页。"
+    },
+    {
+      "category": "优化",
+      "title": "自动生成两个渠道的更新清单",
+      "details": "Tag 发布读取私有仓库中的 release-notes 文件并生成 JSON 清单和 HTML 页面。"
+    },
+    {
+      "category": "修复",
+      "title": "保持旧版更新清单兼容",
+      "details": "缺少结构化字段的旧清单仍可使用摘要完成更新检查。"
+    },
+    {
+      "category": "兼容性/注意事项",
+      "title": "更新链接执行 HTTPS 域名校验",
+      "details": "客户端只打开更新渠道允许的 HTTPS 地址。"
+    }
+  ],
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.80.html",
   "download_url": "https://wwbbt.lanzout.com/b0j1gbbgf",
   "download_password": "bjcr",
-  "sha256": "",
+  "sha256": "8aaca0b5dd83b54d547f28cecacc9df5066b1eccd07a1d952863827a10fd505c",
   "mandatory": false
 }

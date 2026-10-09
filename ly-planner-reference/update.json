@@ -1,11 +1,44 @@
 {
-  "latest_version": "3.1.76",
-  "tag": "v3.1.76",
-  "release_date": "2026-10-05",
-  "summary": "Smart Material Planner Reference v3.1.76 已发布。",
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.76.html",
-  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.76/SmartMaterialPlannerReference_3.1.76_win_x64_onedir.zip",
+  "schema_version": 2,
+  "latest_version": "3.1.80",
+  "tag": "v3.1.80",
+  "release_date": "2026-10-09",
+  "summary": "Reference 渠道同步发布 3.1.80 更新。",
+  "changes": [
+    {
+      "category": "新增",
+      "title": "更新弹窗显示结构化内容",
+      "details": "客户端按新增、优化、修复和兼容性分类展示本次版本变化，并支持滚动查看。"
+    },
+    {
+      "category": "新增",
+      "title": "支持查看完整版本说明",
+      "details": "用户可以从更新弹窗打开当前版本的 GitHub Pages 说明页。"
+    },
+    {
+      "category": "优化",
+      "title": "自动生成两个渠道的更新清单",
+      "details": "Tag 发布读取私有仓库中的 release-notes 文件并生成 JSON 清单和 HTML 页面。"
+    },
+    {
+      "category": "修复",
+      "title": "保持旧版更新清单兼容",
+      "details": "缺少结构化字段的旧清单仍可使用摘要完成更新检查。"
+    },
+    {
+      "category": "兼容性/注意事项",
+      "title": "更新链接执行 HTTPS 域名校验",
+      "details": "客户端只打开更新渠道允许的 HTTPS 地址。"
+    },
+    {
+      "category": "兼容性/注意事项",
+      "title": "Reference 渠道使用独立 Windows onedir 包",
+      "details": "请从 Reference 渠道下载对应安装包。"
+    }
+  ],
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.80.html",
+  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.80/SmartMaterialPlannerReference_3.1.80_win_x64_onedir.zip",
   "download_password": "",
-  "sha256": "53dca2c6cd9dccd9d25d3b82db9bc3896c29435aa3fc296380e950c1f535a3d2",
+  "sha256": "5f7d33666784244c20efc240eca88b73b89610765c33fafe4a3675f20a75166c",
   "mandatory": false
 }
