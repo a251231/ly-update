@@ -1,34 +1,29 @@
 {
   "schema_version": 2,
-  "latest_version": "3.1.80",
-  "tag": "v3.1.80",
-  "release_date": "2026-10-09",
-  "summary": "Reference 渠道同步发布 3.1.80 更新。",
+  "latest_version": "3.1.83",
+  "tag": "v3.1.83",
+  "release_date": "2026-10-10",
+  "summary": "Reference 渠道同步发布 3.1.83 更新。",
   "changes": [
     {
       "category": "新增",
-      "title": "更新弹窗显示结构化内容",
-      "details": "客户端按新增、优化、修复和兼容性分类展示本次版本变化，并支持滚动查看。"
+      "title": "支持实时 MCP 物料切换与双草稿",
+      "details": "MCP 可按稳定物料 ID 切换磷酸铁与碳酸锂，手动草稿和 MCP 草稿按物料隔离保存，过期批号覆盖在批号范围恢复后可继续使用。"
     },
     {
       "category": "新增",
-      "title": "支持查看完整版本说明",
-      "details": "用户可以从更新弹窗打开当前版本的 GitHub Pages 说明页。"
-    },
-    {
-      "category": "优化",
-      "title": "自动生成两个渠道的更新清单",
-      "details": "Tag 发布读取私有仓库中的 release-notes 文件并生成 JSON 清单和 HTML 页面。"
+      "title": "支持按产线异步推荐",
+      "details": "推荐服务按各产线独立使用库存、每批配方、批数和目标计算，提供查询、取消和过期结果保护，不自动改写当前草稿。"
     },
     {
       "category": "修复",
-      "title": "保持旧版更新清单兼容",
-      "details": "缺少结构化字段的旧清单仍可使用摘要完成更新检查。"
+      "title": "保持 MCP 正式结果与手动草稿一致",
+      "details": "MCP 排产完成后恢复手动草稿时，正式结果摘要、库存剩余量和交付事实继续保持已提交结果。"
     },
     {
-      "category": "兼容性/注意事项",
-      "title": "更新链接执行 HTTPS 域名校验",
-      "details": "客户端只打开更新渠道允许的 HTTPS 地址。"
+      "category": "修复",
+      "title": "修复发布验收与 Qt Worker 生命周期",
+      "details": "忽略 Windows 临时目录的瞬时清理错误，避免已完成验收被误报失败；控制器销毁后忽略迟到 Worker 回调，避免 Qt 测试异常。"
     },
     {
       "category": "兼容性/注意事项",
@@ -36,9 +31,9 @@
       "details": "请从 Reference 渠道下载对应安装包。"
     }
   ],
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.80.html",
-  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.80/SmartMaterialPlannerReference_3.1.80_win_x64_onedir.zip",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.83.html",
+  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.83/SmartMaterialPlannerReference_3.1.83_win_x64_onedir.zip",
   "download_password": "",
-  "sha256": "5f7d33666784244c20efc240eca88b73b89610765c33fafe4a3675f20a75166c",
+  "sha256": "ec3f7dfe90c99c6a51ea9f37380d0fdefa0697661bd4b9105f1f1a800fa73e6f",
   "mandatory": false
 }
