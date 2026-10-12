@@ -1,29 +1,29 @@
 {
   "schema_version": 2,
-  "latest_version": "3.1.86",
-  "tag": "v3.1.86",
+  "latest_version": "3.1.87",
+  "tag": "v3.1.87",
   "release_date": "2026-10-12",
-  "summary": "修复 FIFO 库龄奖励压过质量目标的问题，接通后台次优解诊断，并稳定 CI 回归检查。",
+  "summary": "修复安装版启动缺少 AI 任务契约及服务/Worker 模块的问题，统一延迟导出打包，并加强双厂家验包。",
   "changes": [
     {
       "category": "修复",
-      "title": "质量目标优先于库存偏好奖励",
-      "details": "质量误差优先，FIFO 库龄与方差奖励仅对达标候选生效；单体与向量化评分、提前成功判定保持一致，避免偏好奖励让超标方案排在合格方案之前。"
+      "title": "安装版可正常加载 AI 任务契约",
+      "details": "修复启动时提示缺少 services.ai.task_contracts 的问题，统一收集 AI 延迟导出子模块，避免只补单个模块后继续出现同类启动错误。"
     },
     {
       "category": "修复",
-      "title": "真实次优解显示后台质量诊断",
-      "details": "在后台按实际选用包数计算质量均值与供应商归因，普通警告和共享决策弹窗均可查看诊断。缺失或非有限指标保持质量未核验提示，供应商诊断详情不进入 MCP 公开响应。"
+      "title": "补齐服务与 Worker 冻结依赖",
+      "details": "补齐通用服务和后台 Worker 的延迟导出，当前厂家所属 MES Worker 也按静态模块归属收集；Reference 保持厂家隔离，源码仍使用惰性加载。"
     },
     {
-      "category": "修复",
-      "title": "稳定类型检查与界面回归",
-      "details": "补齐适应度模块类型导入，修正几何恢复测试的实际依赖位置，并隔离工作台测试设置，避免已保存窗口几何影响空态断言。"
+      "category": "优化",
+      "title": "发布前验证真实冻结模块图",
+      "details": "桌面验包使用公共门面同源模块元数据，缺少任一必须模块或仅存在近似名称时直接失败，避免源码测试通过但安装包无法启动。"
     }
   ],
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.86.html",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.87.html",
   "download_url": "https://wwbbt.lanzout.com/b0j1gbbgf",
   "download_password": "bjcr",
-  "sha256": "7243ae2a8b8a245d901efd49ea4462d83b2abb96f17475df8d000f81c976eeb5",
+  "sha256": "297d660d8985a7453dc8a37b542f42eb4f0a692e90f9b6eaf6b35fabc4b6b1d7",
   "mandatory": false
 }
