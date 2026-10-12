@@ -1,34 +1,29 @@
 {
   "schema_version": 2,
-  "latest_version": "3.1.83",
-  "tag": "v3.1.83",
-  "release_date": "2026-10-10",
-  "summary": "本版本完善实时 MCP 物料切换、双草稿和分线推荐能力，并修复发布验收与 Qt Worker 生命周期问题。",
+  "latest_version": "3.1.86",
+  "tag": "v3.1.86",
+  "release_date": "2026-10-12",
+  "summary": "修复 FIFO 库龄奖励压过质量目标的问题，接通后台次优解诊断，并稳定 CI 回归检查。",
   "changes": [
     {
-      "category": "新增",
-      "title": "支持实时 MCP 物料切换与双草稿",
-      "details": "MCP 可按稳定物料 ID 切换磷酸铁与碳酸锂，手动草稿和 MCP 草稿按物料隔离保存，过期批号覆盖在批号范围恢复后可继续使用。"
-    },
-    {
-      "category": "新增",
-      "title": "支持按产线异步推荐",
-      "details": "推荐服务按各产线独立使用库存、每批配方、批数和目标计算，提供查询、取消和过期结果保护，不自动改写当前草稿。"
+      "category": "修复",
+      "title": "质量目标优先于库存偏好奖励",
+      "details": "质量误差优先，FIFO 库龄与方差奖励仅对达标候选生效；单体与向量化评分、提前成功判定保持一致，避免偏好奖励让超标方案排在合格方案之前。"
     },
     {
       "category": "修复",
-      "title": "保持 MCP 正式结果与手动草稿一致",
-      "details": "MCP 排产完成后恢复手动草稿时，正式结果摘要、库存剩余量和交付事实继续保持已提交结果。"
+      "title": "真实次优解显示后台质量诊断",
+      "details": "在后台按实际选用包数计算质量均值与供应商归因，普通警告和共享决策弹窗均可查看诊断。缺失或非有限指标保持质量未核验提示，供应商诊断详情不进入 MCP 公开响应。"
     },
     {
       "category": "修复",
-      "title": "修复发布验收与 Qt Worker 生命周期",
-      "details": "忽略 Windows 临时目录的瞬时清理错误，避免已完成验收被误报失败；控制器销毁后忽略迟到 Worker 回调，避免 Qt 测试异常。"
+      "title": "稳定类型检查与界面回归",
+      "details": "补齐适应度模块类型导入，修正几何恢复测试的实际依赖位置，并隔离工作台测试设置，避免已保存窗口几何影响空态断言。"
     }
   ],
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.83.html",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.86.html",
   "download_url": "https://wwbbt.lanzout.com/b0j1gbbgf",
   "download_password": "bjcr",
-  "sha256": "ad7767fbdbc29704fcc242959533a67f97895f9429230ae8daa307ca0ae04a31",
+  "sha256": "7243ae2a8b8a245d901efd49ea4462d83b2abb96f17475df8d000f81c976eeb5",
   "mandatory": false
 }
