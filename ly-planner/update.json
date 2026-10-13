@@ -1,29 +1,39 @@
 {
   "schema_version": 2,
-  "latest_version": "3.1.87",
-  "tag": "v3.1.87",
-  "release_date": "2026-10-12",
-  "summary": "修复安装版启动缺少 AI 任务契约及服务/Worker 模块的问题，统一延迟导出打包，并加强双厂家验包。",
+  "latest_version": "3.1.88",
+  "tag": "v3.1.88",
+  "release_date": "2026-10-13",
+  "summary": "修复 MCP 配方与批准同步、AI 第八轮响应、物料交付记录和 Excel 自定义列统计。",
   "changes": [
     {
       "category": "修复",
-      "title": "安装版可正常加载 AI 任务契约",
-      "details": "修复启动时提示缺少 services.ai.task_contracts 的问题，统一收集 AI 延迟导出子模块，避免只补单个模块后继续出现同类启动错误。"
+      "title": "MCP 省略字段不再清空已有批次配方",
+      "details": "按当前物料实际草稿检查批次覆盖。没有覆盖时兼容旧客户端；已有覆盖时省略字段返回明确错误并保留配置，显式提供空对象才清除。"
     },
     {
       "category": "修复",
-      "title": "补齐服务与 Worker 冻结依赖",
-      "details": "补齐通用服务和后台 Worker 的延迟导出，当前厂家所属 MES Worker 也按静态模块归属收集；Reference 保持厂家隔离，源码仍使用惰性加载。"
+      "title": "本地批准后同步实际 MCP 目标",
+      "details": "普通参数更新与本地质量批准共用草稿提交入口，批准响应、状态查询和后续排产输入保持一致，状态修订仅推进一次；手工配置保持独立，过期确认仍被拒绝。"
     },
     {
-      "category": "优化",
-      "title": "发布前验证真实冻结模块图",
-      "details": "桌面验包使用公共门面同源模块元数据，缺少任一必须模块或仅存在近似名称时直接失败，避免源码测试通过但安装包无法启动。"
+      "category": "修复",
+      "title": "保留 AI 第八轮有效响应",
+      "details": "第八轮草稿正常进入本地验证，澄清问题保留并等待回答，工具请求沿用独立工具预算；需要第九次 Provider 调用时才停止，不增加网络调用上限。"
+    },
+    {
+      "category": "修复",
+      "title": "切换物料保留交付记录与文件入口",
+      "details": "分别保存各物料交付快照和最近交付路径，恢复后按当前结果、目标和元数据核对版本。旧记录保留历史事实，结果或目标变化后的新版本显示待交付。"
+    },
+    {
+      "category": "修复",
+      "title": "隐藏 Excel 明细列不影响供应商统计",
+      "details": "统计直接使用原始结果的实际包数、当前物料包重与生产批号，覆盖磷酸铁、碳酸锂、可配置包重及一行多包结果；原库存和剩余库存继续使用现有账本口径。"
     }
   ],
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.87.html",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.88.html",
   "download_url": "https://wwbbt.lanzout.com/b0j1gbbgf",
   "download_password": "bjcr",
-  "sha256": "297d660d8985a7453dc8a37b542f42eb4f0a692e90f9b6eaf6b35fabc4b6b1d7",
+  "sha256": "98804f67778474a2fb2259614beb7c2d912603c678b67cdd66d2d6f11a7fd36f",
   "mandatory": false
 }

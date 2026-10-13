@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Smart Material Planner Reference v3.1.88 更新说明</title>
+</head>
+<body>
+<h1>Smart Material Planner Reference v3.1.88</h1>
+<p>发布日期：2026-10-13</p>
+<p>Reference 渠道同步修复 MCP、AI 预算、物料交付恢复及 Excel 统计。</p>
+<h2>更新内容</h2>
+<h3>修复</h3>
+<ul>
+<li>MCP 省略字段不再清空已有批次配方：按当前物料实际草稿检查批次覆盖。没有覆盖时兼容旧客户端；已有覆盖时省略字段返回明确错误并保留配置，显式提供空对象才清除。</li>
+<li>本地批准后同步实际 MCP 目标：普通参数更新与本地质量批准共用草稿提交入口，批准响应、状态查询和后续排产输入保持一致，状态修订仅推进一次；手工配置保持独立，过期确认仍被拒绝。</li>
+<li>保留 AI 第八轮有效响应：第八轮草稿正常进入本地验证，澄清问题保留并等待回答，工具请求沿用独立工具预算；需要第九次 Provider 调用时才停止，不增加网络调用上限。</li>
+<li>切换物料保留交付记录与文件入口：分别保存各物料交付快照和最近交付路径，恢复后按当前结果、目标和元数据核对版本。旧记录保留历史事实，结果或目标变化后的新版本显示待交付。</li>
+<li>隐藏 Excel 明细列不影响供应商统计：统计直接使用原始结果的实际包数、当前物料包重与生产批号，覆盖磷酸铁、碳酸锂、可配置包重及一行多包结果；原库存和剩余库存继续使用现有账本口径。</li>
+</ul>
+<h3>兼容性/注意事项</h3>
+<ul>
+<li>Reference 渠道使用独立 Windows onedir 包：请下载 Reference 对应便携包，保持厂家模块与 MES 隔离。</li>
+</ul>
+<p>本版本修复参数提交、AI 预算边界、物料交付恢复和导出统计，不改变质量批准权限或排产规则。</p>
+<h2>升级方式</h2>
+<ul>
+<li>山东渠道使用新版 Setup 覆盖升级；Reference 使用对应渠道的 onedir 便携包。</li>
+<li>已有批次覆盖的 MCP 客户端应显式提交 batch_requirements_overrides，只有空对象表示清除覆盖。</li>
+</ul>
+<h2>验证与兼容性</h2>
+<ul>
+<li>补充 MCP 草稿及批准、AI 第八轮边界、双厂家物料交付与 Excel 隐藏列和多包统计回归。</li>
+<li>旧物料会话缺少交付快照时使用空记录，不将历史交付误判为当前版本已交付。</li>
+<li>Tag 发布继续执行完整测试、双厂家构建和安装包验证。</li>
+</ul>
+<h2>下载</h2>
+<p><a href="https://github.com/a251231/ly/releases/download/v3.1.88/SmartMaterialPlannerReference_3.1.88_win_x64_onedir.zip">点击下载</a></p>
+<p>推荐使用 Setup 安装包；onedir 为免安装便携包，onefile 为旧入口兼容包。</p>
+<p>当前发布包未做 Authenticode 签名，Windows 可能显示“未知发布者”。</p>
+</body>
+</html>
