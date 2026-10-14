@@ -1,34 +1,29 @@
 {
   "schema_version": 2,
-  "latest_version": "3.1.88",
-  "tag": "v3.1.88",
-  "release_date": "2026-10-13",
-  "summary": "Reference 渠道同步修复 MCP、AI 预算、物料交付恢复及 Excel 统计。",
+  "latest_version": "3.1.89",
+  "tag": "v3.1.89",
+  "release_date": "2026-10-14",
+  "summary": "Reference 渠道同步修复退出收尾、GA 指标完整性、共享备选料和异步导出归属。",
   "changes": [
     {
       "category": "修复",
-      "title": "MCP 省略字段不再清空已有批次配方",
-      "details": "按当前物料实际草稿检查批次覆盖。没有覆盖时兼容旧客户端；已有覆盖时省略字段返回明确错误并保留配置，显式提供空对象才清除。"
+      "title": "退出时等待全部后台任务收尾",
+      "details": "确认退出后统一取消并等待当前及被替换的后台任务，覆盖 MES 同步、库存和上传任务；等待超时后继续收尾，避免后台线程尚未结束时提前退出。"
     },
     {
       "category": "修复",
-      "title": "本地批准后同步实际 MCP 目标",
-      "details": "普通参数更新与本地质量批准共用草稿提交入口，批准响应、状态查询和后续排产输入保持一致，状态修订仅推进一次；手工配置保持独立，过期确认仍被拒绝。"
+      "title": "目标指标缺失的候选不再判为达标",
+      "details": "已配置目标指标在选用包中含缺失值或无穷时，候选保持无效，不以剩余有效数据均值判为达标，也不作为可接受的次优结果返回。完整数据继续按组合均值判定。"
     },
     {
       "category": "修复",
-      "title": "保留 AI 第八轮有效响应",
-      "details": "第八轮草稿正常进入本地验证，澄清问题保留并等待回答，工具请求沿用独立工具预算；需要第九次 Provider 调用时才停止，不增加网络调用上限。"
+      "title": "共享备选料不因需求顺序漏掉可行配方",
+      "details": "初始化统一分配共享来源，保留主料优先并允许为受限需求重新分配；多个备选来源保持随机搜索，避免某项需求先占用库存导致可行配方初始化失败。"
     },
     {
       "category": "修复",
-      "title": "切换物料保留交付记录与文件入口",
-      "details": "分别保存各物料交付快照和最近交付路径，恢复后按当前结果、目标和元数据核对版本。旧记录保留历史事实，结果或目标变化后的新版本显示待交付。"
-    },
-    {
-      "category": "修复",
-      "title": "隐藏 Excel 明细列不影响供应商统计",
-      "details": "统计直接使用原始结果的实际包数、当前物料包重与生产批号，覆盖磷酸铁、碳酸锂、可配置包重及一行多包结果；原库存和剩余库存继续使用现有账本口径。"
+      "title": "切换物料后导出记录归属正确",
+      "details": "当前及全部 Excel 导出完成后，记录回启动导出的来源物料；导出期间结果或目标变化时保留历史，不将新版本误标为已交付，也不污染切换后的物料记录和文件入口。"
     },
     {
       "category": "兼容性/注意事项",
@@ -36,9 +31,9 @@
       "details": "请下载 Reference 对应便携包，保持厂家模块与 MES 隔离。"
     }
   ],
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.88.html",
-  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.88/SmartMaterialPlannerReference_3.1.88_win_x64_onedir.zip",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.89.html",
+  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.89/SmartMaterialPlannerReference_3.1.89_win_x64_onedir.zip",
   "download_password": "",
-  "sha256": "6f0e12632d73ca6c4f71413686cfdb7b73f3bbf33977479e2193fdfd9179f021",
+  "sha256": "3391578afd69f7a84bc309a5190b6ad92c037dafe361ac99a96688ea25c7a037",
   "mandatory": false
 }
