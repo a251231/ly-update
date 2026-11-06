@@ -1,39 +1,44 @@
 {
   "schema_version": 2,
-  "latest_version": "3.1.89",
-  "tag": "v3.1.89",
-  "release_date": "2026-10-14",
-  "summary": "Reference 渠道同步修复退出收尾、GA 指标完整性、共享备选料和异步导出归属。",
+  "latest_version": "3.1.93",
+  "tag": "v3.1.93",
+  "release_date": "2026-11-06",
+  "summary": "Reference 渠道修复 MCP 身份隔离与 Excel 安全导出。MES 上传范围功能属于山东渠道。",
   "changes": [
     {
-      "category": "修复",
-      "title": "退出时等待全部后台任务收尾",
-      "details": "确认退出后统一取消并等待当前及被替换的后台任务，覆盖 MES 同步、库存和上传任务；等待超时后继续收尾，避免后台线程尚未结束时提前退出。"
+      "category": "新增",
+      "title": "山东渠道 MES 上传范围可选",
+      "details": "本次上传可统一选择 D5+BL、仅 D5 或仅 BL，默认双料；预览、库存校验和提交复验使用同一范围，沿用已有明细跳过和缺失物料补录规则。"
     },
     {
       "category": "修复",
-      "title": "目标指标缺失的候选不再判为达标",
-      "details": "已配置目标指标在选用包中含缺失值或无穷时，候选保持无效，不以剩余有效数据均值判为达标，也不作为可接受的次优结果返回。完整数据继续按组合均值判定。"
+      "title": "山东渠道 MES 取消与提交回执",
+      "details": "取消或退出后等待当前批次结束，停止后续批次，并保留已提交、未开始及结果待核实清单。产品确认、验证料、产量与 PBCS 编辑继续使用原入口。"
     },
     {
       "category": "修复",
-      "title": "共享备选料不因需求顺序漏掉可行配方",
-      "details": "初始化统一分配共享来源，保留主料优先并允许为受限需求重新分配；多个备选来源保持随机搜索，避免某项需求先占用库存导致可行配方初始化失败。"
+      "title": "实时 MCP 身份与权限隔离",
+      "details": "各身份使用独立 Token，保存和删除仅影响选定身份；禁止通过共享密钥合并权限。"
     },
     {
       "category": "修复",
-      "title": "切换物料后导出记录归属正确",
-      "details": "当前及全部 Excel 导出完成后，记录回启动导出的来源物料；导出期间结果或目标变化时保留历史，不将新版本误标为已交付，也不污染切换后的物料记录和文件入口。"
+      "title": "Excel 导出失败保护与文本安全",
+      "details": "完整写入临时文件后原子发布，失败时保留旧报表；库存、供应商等外部文本不再自动解释为 Excel 公式。"
     },
     {
       "category": "兼容性/注意事项",
-      "title": "Reference 渠道使用独立 Windows onedir 包",
-      "details": "请下载 Reference 对应便携包，保持厂家模块与 MES 隔离。"
+      "title": "历史共享 Token 需要更换",
+      "details": "若启用身份仍共用旧 Token，开启服务时会提示冲突。请为各身份保存独立 Token，并分别更新对应客户端配置。"
+    },
+    {
+      "category": "兼容性/注意事项",
+      "title": "Reference 使用独立渠道包",
+      "details": "MES 上传范围与飞书台账功能属于山东渠道，不包含在 Reference 中；本渠道同步接入授权和 Excel 导出修复。"
     }
   ],
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.89.html",
-  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.89/SmartMaterialPlannerReference_3.1.89_win_x64_onedir.zip",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.93.html",
+  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.93/SmartMaterialPlannerReference_3.1.93_win_x64_onedir.zip",
   "download_password": "",
-  "sha256": "3391578afd69f7a84bc309a5190b6ad92c037dafe361ac99a96688ea25c7a037",
+  "sha256": "ceacfbc5569f658478c835a32b6b7043aba3d23c67ac3bb482a96d8d4b0a191a",
   "mandatory": false
 }
