@@ -1,39 +1,34 @@
 {
   "schema_version": 2,
-  "latest_version": "3.1.93",
-  "tag": "v3.1.93",
-  "release_date": "2026-11-06",
-  "summary": "MES 支持 D5/BL 一起或选择性上传，完善取消回执，修复 MCP 身份隔离与 Excel 安全导出。",
+  "latest_version": "3.1.95",
+  "tag": "v3.1.95",
+  "release_date": "2026-11-07",
+  "summary": "台账来源可由业务用户自行更换，异常检测值保留原值并提示后继续更新，完善公式保护。",
   "changes": [
     {
-      "category": "新增",
-      "title": "山东渠道 MES 上传范围可选",
-      "details": "本次上传可统一选择 D5+BL、仅 D5 或仅 BL，默认双料；预览、库存校验和提交复验使用同一范围，沿用已有明细跳过和缺失物料补录规则。"
+      "category": "修复",
+      "title": "山东版异常检测值保留原值并继续更新",
+      "details": "检测指标为 #N/A 等明确错误值或飞书返回不可读标记时，保留台账原值、新行留空，继续更新其他有效数据。完成页列出批次、指标、来源表及行列位置；异常值不替换已有采用基线。"
+    },
+    {
+      "category": "优化",
+      "title": "山东版业务用户自行更换来源表",
+      "details": "来源表删除、迁移或新建替代表时，可直接更换来源并重试。在设置中选择新表、检查通过并保存后重新更新；对应关系随交接文件保存，普通换表无需修改代码。"
     },
     {
       "category": "修复",
-      "title": "山东渠道 MES 取消与提交回执",
-      "details": "取消或退出后等待当前批次结束，停止后续批次，并保留已提交、未开始及结果待核实清单。产品确认、验证料、产量与 PBCS 编辑继续使用原入口。"
-    },
-    {
-      "category": "修复",
-      "title": "实时 MCP 身份与权限隔离",
-      "details": "各身份使用独立 Token，保存和删除仅影响选定身份；禁止通过共享密钥合并权限。"
-    },
-    {
-      "category": "修复",
-      "title": "Excel 导出失败保护与文本安全",
-      "details": "完整写入临时文件后原子发布，失败时保留旧报表；库存、供应商等外部文本不再自动解释为 Excel 公式。"
+      "title": "动态数组公式识别及 COM 读取",
+      "details": "排除动态数组区域中的空白和计算结果，继续保护未知真实公式；减少逐行重复读取 COM 属性，保留副本重算、保存后复读和原文件保护。"
     },
     {
       "category": "兼容性/注意事项",
-      "title": "历史共享 Token 需要更换",
-      "details": "若启用身份仍共用旧 Token，开启服务时会提示冲突。请为各身份保存独立 Token，并分别更新对应客户端配置。"
+      "title": "检测缺失不代表数据合格",
+      "details": "异常字段保留旧值仍须业务核对，新增行缺失指标不自动补值。未知复杂对象、单位和方法仍按严格规则检查；MES 上传范围及实时 MCP 单服务 Token 规则保持。"
     }
   ],
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.93.html",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.95.html",
   "download_url": "https://wwbbt.lanzout.com/b0j1gbbgf",
   "download_password": "bjcr",
-  "sha256": "a2e2154b01557bd564f00d5a4a0d6223760ca88d8b6b20c296c9d26707dfc3a3",
+  "sha256": "1c4962ca91775871f0f989cac3b9930079a6ac24bd32e26472fe3f93c28a46f6",
   "mandatory": false
 }
