@@ -1,39 +1,24 @@
 {
   "schema_version": 2,
-  "latest_version": "3.1.96",
-  "tag": "v3.1.96",
+  "latest_version": "3.1.97",
+  "tag": "v3.1.97",
   "release_date": "2026-11-13",
-  "summary": "Reference 渠道同步升级单进程向量化遗传算法、分仓空库阻断、桌面局部重排与跨物料配套，并保持实时 MCP 单一服务密钥规则。",
+  "summary": "Reference 渠道随版本同步通用更新，本次台账更新补丁仅适用于山东版。",
   "changes": [
     {
-      "category": "优化",
-      "title": "单进程矩阵向量化遗传算法与库龄异常年份修正",
-      "details": "采用单进程 NumPy 矩阵向量化批量评估适应度，消除进程池创建与 IPC 开销；强化零误差质量门控，全部已设目标命中后才叠加 FIFO 与方差奖励，并修正 9999 等占位年份导致的库龄归一化失真。"
-    },
-    {
       "category": "修复",
-      "title": "分仓隔离空库严禁回退全库",
-      "details": "当库存表包含合法仓库列与已知仓库值时，空分仓池将严格保持空仓状态并在预检、风险预测与求解阶段明确阻断报告缺料，防止跨仓错配。"
-    },
-    {
-      "category": "新增",
-      "title": "桌面选中批次局部重排与跨物料配套推算",
-      "details": "在结果面板直接开放局部重排与跨物料配套弹窗工作流，分别基于真实来源账本释放重算替换与显式分组配比取整规则生成只读草稿，并修复暗色主题对比度。"
+      "title": "32 位 WPS 更新台账时内存不足",
+      "details": "同步依据原先一次性写入的数据量过大，在 32 位 WPS 中会报“内存不足”（0x8007000E）。现改为分小段分批写入，同步结果与原有口径保持一致。"
     },
     {
       "category": "优化",
-      "title": "Excel 全量指标签名汇总与原子落盘",
-      "details": "导出器动态遍历物料全部 target_metrics 上下限生成汇总目标签名，避免不同指标约束批次误合并；移除内部库存标识列，并通过同目录临时文件原子替换落盘，外部文本保持文本格式。"
+      "title": "读取上一班台账大幅提速",
+      "details": "表头合并单元格改为整段判定并二分定位，读取上一班台账的耗时由约 28 秒降至约 6 秒，不改变识别结果。"
     },
     {
       "category": "优化",
-      "title": "实时 MCP 沿用单一服务密钥并下线独立快照服务",
-      "details": "移除独立快照 MCP 服务入口，实时服务按厂家保持唯一工作台服务密钥与统一权限（只读 11 / 默认 20 / 全开 22 项工具），并保留方案人工确认后启动排产的门禁。"
-    },
-    {
-      "category": "新增",
-      "title": "山东版台账兼容 WPS 并支持来源启停、更换与重试",
-      "details": "未注册 Excel 自动化组件时可调用本机 WPS 表格重算；内置及自定义飞书来源支持停用、恢复和换表，来源失效后可更换并重试，异常检测值保留原值、新行留空并列出待核位置。"
+      "title": "台账副本更新失败时提供脱敏诊断",
+      "details": "更新失败且无法归类时，提示信息追加异常类型、错误码与出错行号；不包含文件路径、凭据或台账内容，便于现场定位问题。"
     },
     {
       "category": "兼容性/注意事项",
@@ -41,9 +26,9 @@
       "details": "山东版 MES 与飞书台账自动更新继续按厂家能力隔离，不为 Reference 启用这些业务入口。"
     }
   ],
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.96.html",
-  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.96/SmartMaterialPlannerReference_3.1.96_win_x64_onedir.zip",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.97.html",
+  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.97/SmartMaterialPlannerReference_3.1.97_win_x64_onedir.zip",
   "download_password": "",
-  "sha256": "65dcc1c4330710bbab1c0d2132d6ee1ac6ee0bbb3852bbf0e128f6e425d13196",
+  "sha256": "af33cb7b3f34de2251879358c4bcb60e90f0c9f2410b380f0e225eefe2de1544",
   "mandatory": false
 }
