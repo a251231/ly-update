@@ -1,39 +1,49 @@
 {
   "schema_version": 2,
-  "latest_version": "3.1.95",
-  "tag": "v3.1.95",
-  "release_date": "2026-11-07",
-  "summary": "优化通用 Excel 公式识别与 COM 读取，Reference 排产业务及实时 MCP 接入规则保持。",
+  "latest_version": "3.1.96",
+  "tag": "v3.1.96",
+  "release_date": "2026-11-13",
+  "summary": "Reference 渠道同步升级单进程向量化遗传算法、分仓空库阻断、桌面局部重排与跨物料配套，并保持实时 MCP 单一服务密钥规则。",
   "changes": [
     {
+      "category": "优化",
+      "title": "单进程矩阵向量化遗传算法与库龄异常年份修正",
+      "details": "采用单进程 NumPy 矩阵向量化批量评估适应度，消除进程池创建与 IPC 开销；强化零误差质量门控，全部已设目标命中后才叠加 FIFO 与方差奖励，并修正 9999 等占位年份导致的库龄归一化失真。"
+    },
+    {
       "category": "修复",
-      "title": "山东版异常检测值保留原值并继续更新",
-      "details": "检测指标为 #N/A 等明确错误值或飞书返回不可读标记时，保留台账原值、新行留空，继续更新其他有效数据。完成页列出批次、指标、来源表及行列位置；异常值不替换已有采用基线。"
+      "title": "分仓隔离空库严禁回退全库",
+      "details": "当库存表包含合法仓库列与已知仓库值时，空分仓池将严格保持空仓状态并在预检、风险预测与求解阶段明确阻断报告缺料，防止跨仓错配。"
+    },
+    {
+      "category": "新增",
+      "title": "桌面选中批次局部重排与跨物料配套推算",
+      "details": "在结果面板直接开放局部重排与跨物料配套弹窗工作流，分别基于真实来源账本释放重算替换与显式分组配比取整规则生成只读草稿，并修复暗色主题对比度。"
     },
     {
       "category": "优化",
-      "title": "山东版业务用户自行更换来源表",
-      "details": "来源表删除、迁移或新建替代表时，可直接更换来源并重试。在设置中选择新表、检查通过并保存后重新更新；对应关系随交接文件保存，普通换表无需修改代码。"
+      "title": "Excel 全量指标签名汇总与原子落盘",
+      "details": "导出器动态遍历物料全部 target_metrics 上下限生成汇总目标签名，避免不同指标约束批次误合并；移除内部库存标识列，并通过同目录临时文件原子替换落盘，外部文本保持文本格式。"
     },
     {
-      "category": "修复",
-      "title": "动态数组公式识别及 COM 读取",
-      "details": "排除动态数组区域中的空白和计算结果，继续保护未知真实公式；减少逐行重复读取 COM 属性，保留副本重算、保存后复读和原文件保护。"
+      "category": "优化",
+      "title": "实时 MCP 沿用单一服务密钥并下线独立快照服务",
+      "details": "移除独立快照 MCP 服务入口，实时服务按厂家保持唯一工作台服务密钥与统一权限（只读 11 / 默认 20 / 全开 22 项工具），并保留方案人工确认后启动排产的门禁。"
     },
     {
-      "category": "兼容性/注意事项",
-      "title": "检测缺失不代表数据合格",
-      "details": "异常字段保留旧值仍须业务核对，新增行缺失指标不自动补值。未知复杂对象、单位和方法仍按严格规则检查；MES 上传范围及实时 MCP 单服务 Token 规则保持。"
+      "category": "新增",
+      "title": "山东版台账兼容 WPS 并支持来源启停、更换与重试",
+      "details": "未注册 Excel 自动化组件时可调用本机 WPS 表格重算；内置及自定义飞书来源支持停用、恢复和换表，来源失效后可更换并重试，异常检测值保留原值、新行留空并列出待核位置。"
     },
     {
       "category": "兼容性/注意事项",
       "title": "厂家功能边界保持",
-      "details": "山东版 MES/飞书台账功能继续按厂家能力隔离，不为 Reference 启用这些业务入口。"
+      "details": "山东版 MES 与飞书台账自动更新继续按厂家能力隔离，不为 Reference 启用这些业务入口。"
     }
   ],
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.95.html",
-  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.95/SmartMaterialPlannerReference_3.1.95_win_x64_onedir.zip",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner-reference/releases/v3.1.96.html",
+  "download_url": "https://github.com/a251231/ly/releases/download/v3.1.96/SmartMaterialPlannerReference_3.1.96_win_x64_onedir.zip",
   "download_password": "",
-  "sha256": "800215246bc00958f1aeabdbebbf6f54925a3d56e9f182d00957ce29a11fe9ee",
+  "sha256": "65dcc1c4330710bbab1c0d2132d6ee1ac6ee0bbb3852bbf0e128f6e425d13196",
   "mandatory": false
 }
