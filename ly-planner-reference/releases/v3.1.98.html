@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Smart Material Planner Reference v3.1.98 更新说明</title>
+</head>
+<body>
+<h1>Smart Material Planner Reference v3.1.98</h1>
+<p>发布日期：2026-11-14</p>
+<p>Reference 渠道同步升级表格读取提速、桌面核心局部重排/预检/推荐/导出修复，以及内置 AI 与实时 MCP 契约完善。</p>
+<h2>更新内容</h2>
+<h3>优化</h3>
+<ul>
+<li>台账同步依据分片优化与表格读取提速：将台账同步依据单格分段保持 8000 字符以规避 Excel/WPS COM 内存限制（0x8007000E），并优化台账来源计划与表格/批号读取链路。</li>
+</ul>
+<h3>修复</h3>
+<ul>
+<li>修复局部重排、预检、推荐、导出与 MES 预览边界：修正桌面核心排产与交付链路中的选中批次局部重排、可行性供量预检、参数推荐采样、结果导出及 MES 上传预览问题。</li>
+<li>修复内置 AI 目标校验与实时 MCP 权限限流及契约：修复内置 AI 首次下发目标校验，实施实时 MCP 权限限流与 Schema 瘦身，补齐 workbench_get_run 质量摘要及 run_out 输出契约属性，并修复单传 recipe_mode=summary。</li>
+</ul>
+<h3>兼容性/注意事项</h3>
+<ul>
+<li>厂家功能边界保持：山东版 MES 与飞书台账自动更新继续按厂家能力隔离，不为 Reference 启用这些业务入口。</li>
+</ul>
+<p>本版本聚焦台账与表格读写性能、桌面核心排产与交付稳定性，以及内置 AI 与实时 MCP 工具契约一致性。</p>
+<h2>台账与桌面核心流程</h2>
+<ul>
+<li>台账同步依据分片保持单格 8000 字符，降低 32 位 WPS 与 Excel COM 写入失败风险。</li>
+<li>局部重排、可行性预检、参数推荐、正式导出及 MES 上传预览边界均已对齐。</li>
+</ul>
+<h2>内置 AI 与实时 MCP</h2>
+<ul>
+<li>实时 MCP 工具 Schema 进一步精简，并补齐 workbench_get_run 与 run_out 输出契约字段。</li>
+<li>仅传 recipe_mode=summary 时的返回行为已修正，保持权限与契约一致。</li>
+</ul>
+<h2>下载</h2>
+<p><a href="https://github.com/a251231/ly/releases/download/v3.1.98/SmartMaterialPlannerReference_3.1.98_win_x64_onedir.zip">点击下载</a></p>
+<p>推荐使用 Setup 安装包；onedir 为免安装便携包，onefile 为旧入口兼容包。</p>
+<p>当前发布包未做 Authenticode 签名，Windows 可能显示“未知发布者”。</p>
+</body>
+</html>

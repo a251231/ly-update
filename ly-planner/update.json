@@ -1,29 +1,29 @@
 {
   "schema_version": 2,
-  "latest_version": "3.1.97",
-  "tag": "v3.1.97",
-  "release_date": "2026-11-13",
-  "summary": "修复山东版更新台账时 32 位 WPS 内存不足，读取上一班台账明显提速，并为台账副本更新失败补充脱敏诊断信息。",
+  "latest_version": "3.1.98",
+  "tag": "v3.1.98",
+  "release_date": "2026-11-14",
+  "summary": "提速台账与表格读取链路并完善同步依据分片，修复局部重排、预检、推荐、导出与 MES 预览边界，并补齐内置 AI 校验与实时 MCP 输出契约。",
   "changes": [
     {
+      "category": "优化",
+      "title": "台账同步依据分片优化与表格读取提速",
+      "details": "将台账同步依据单格分段保持 8000 字符以规避 Excel/WPS COM 内存限制（0x8007000E），并优化台账来源计划与表格/批号读取链路。"
+    },
+    {
       "category": "修复",
-      "title": "32 位 WPS 更新台账时内存不足",
-      "details": "同步依据原先一次性写入的数据量过大，在 32 位 WPS 中会报“内存不足”（0x8007000E）。现改为分小段分批写入，同步结果与原有口径保持一致。"
+      "title": "修复局部重排、预检、推荐、导出与 MES 预览边界",
+      "details": "修正桌面核心排产与交付链路中的选中批次局部重排、可行性供量预检、参数推荐采样、结果导出及 MES 上传预览问题。"
     },
     {
-      "category": "优化",
-      "title": "读取上一班台账大幅提速",
-      "details": "表头合并单元格改为整段判定并二分定位，读取上一班台账的耗时由约 28 秒降至约 6 秒，不改变识别结果。"
-    },
-    {
-      "category": "优化",
-      "title": "台账副本更新失败时提供脱敏诊断",
-      "details": "更新失败且无法归类时，提示信息追加异常类型、错误码与出错行号；不包含文件路径、凭据或台账内容，便于现场定位问题。"
+      "category": "修复",
+      "title": "修复内置 AI 目标校验与实时 MCP 权限限流及契约",
+      "details": "修复内置 AI 首次下发目标校验，实施实时 MCP 权限限流与 Schema 瘦身，补齐 workbench_get_run 质量摘要及 run_out 输出契约属性，并修复单传 recipe_mode=summary。"
     }
   ],
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.97.html",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.98.html",
   "download_url": "https://wwbbt.lanzout.com/b0j1gbbgf",
   "download_password": "bjcr",
-  "sha256": "9d3e93ff0ffe2cf2d80f1c89ba4f937461d9b59af6ec78de27ca76ab56cc8c3a",
+  "sha256": "2c9f5cc643d69e83ba7bc09d53d217fab176b5822019a89604a64ad3cbb177f9",
   "mandatory": false
 }
