@@ -1,29 +1,29 @@
 {
   "schema_version": 2,
-  "latest_version": "3.1.98",
-  "tag": "v3.1.98",
-  "release_date": "2026-11-14",
-  "summary": "提速台账与表格读取链路并完善同步依据分片，修复局部重排、预检、推荐、导出与 MES 预览边界，并补齐内置 AI 校验与实时 MCP 输出契约。",
+  "latest_version": "3.2.1",
+  "tag": "v3.2.1",
+  "release_date": "2026-11-20",
+  "summary": "全面修复与增强山东锂源 MES 实时库存、上传防呆及桌面交互闭环，同时优化主窗口启动性能与本地/GitHub Actions 测试并行验收体系。",
   "changes": [
     {
+      "category": "修复",
+      "title": "MES 实时库存去重对账、包号区间/仓库选包与写事务并发防呆",
+      "details": "修复 PLAN_WMS_V_material 因 MES_LIMS_Records 一对多重复行导致父子权重翻倍的对账失败隐患并移除无用连接；范围批次支持全套台账括号写法，严格按 [start, end] 数字包号升序及车间对应仓库选包；在新建/补录/空主表填充事务中统一复检未耗尽占用、取消单占料与实时可用余量，并补齐 Token 过期自动重登与服务端时间校准。"
+    },
+    {
+      "category": "新增",
+      "title": "MES 登录测试连接、上传预览提效与配比状态一键回查",
+      "details": "MES 登录弹窗新增后台只读“测试连接”；上传预览新增单批勾选/排除、同线别批量同步产品型号与验证料、PBCS 实时均衡提示以及库位/超期物料高亮警示；新增 MES 配比状态查询弹窗与待核实批次一键回查能力，并优先收敛产品型号下拉为标准全称型号。"
+    },
+    {
       "category": "优化",
-      "title": "台账同步依据分片优化与表格读取提速",
-      "details": "将台账同步依据单格分段保持 8000 字符以规避 Excel/WPS COM 内存限制（0x8007000E），并优化台账来源计划与表格/批号读取链路。"
-    },
-    {
-      "category": "修复",
-      "title": "修复局部重排、预检、推荐、导出与 MES 预览边界",
-      "details": "修正桌面核心排产与交付链路中的选中批次局部重排、可行性供量预检、参数推荐采样、结果导出及 MES 上传预览问题。"
-    },
-    {
-      "category": "修复",
-      "title": "修复内置 AI 目标校验与实时 MCP 权限限流及契约",
-      "details": "修复内置 AI 首次下发目标校验，实施实时 MCP 权限限流与 Schema 瘦身，补齐 workbench_get_run 质量摘要及 run_out 输出契约属性，并修复单传 recipe_mode=summary。"
+      "title": "主窗口冷启动提速与本地/CI 测试分层并行",
+      "details": "消除主窗口初始化阶段的重复主题解析与过早全局事件过滤回调，单次窗口初始化由 2.31s 缩短至 0.90s；测试框架改为按需加载 Qt 并隔离进程数据与配置目录，本地 run_tests.py 与 GitHub Actions（test.yml、build.yml）全面启用 Qt 按文件多进程并行与增量验收。"
     }
   ],
-  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.1.98.html",
+  "notes_url": "https://a251231.github.io/ly-update/ly-planner/releases/v3.2.1.html",
   "download_url": "https://wwbbt.lanzout.com/b0j1gbbgf",
   "download_password": "bjcr",
-  "sha256": "2c9f5cc643d69e83ba7bc09d53d217fab176b5822019a89604a64ad3cbb177f9",
+  "sha256": "f9ed74f9999b710b824ff6991d862701e7738aba699b93e50e16fde0668069b0",
   "mandatory": false
 }
